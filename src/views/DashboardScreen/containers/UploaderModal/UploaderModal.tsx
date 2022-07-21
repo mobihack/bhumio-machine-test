@@ -70,7 +70,7 @@ export const UploaderModal = ({
       .list({
         pageSize: 6,
         fields: "nextPageToken, files(id, name, mimeType, modifiedTime)",
-        q: searchTerm ? `name contains '${searchTerm}'` : null,
+        q: searchTerm ? `name contains '${searchTerm}'`: undefined,
       })
       .then(function (response: any) {
         setIsFetchingGoogleDriveFiles(false);

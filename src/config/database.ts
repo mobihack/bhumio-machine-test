@@ -1,0 +1,1 @@
+export const DB_URI = process.env.MONGO_URI as string;
