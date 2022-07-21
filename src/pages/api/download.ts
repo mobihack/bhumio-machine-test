@@ -44,7 +44,6 @@ export default async function handler(
       res.status(400).json({ error: "invalid id", status: "error" });
     }
   } catch (error) {
-    console.log(error);
     res.json({ error, status: "error" });
   }
 }

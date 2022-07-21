@@ -16,7 +16,7 @@ import { UploaderModal } from "./containers/UploaderModal/UploaderModal";
 import { useGoogleLogin } from "hooks/useGoogleLogin";
 import { useFetch } from "hooks/useFetch";
 import { fileSaver } from "utils/fileSaver";
-import {getFilesAPI, downloadFileAPI} from "api";
+import { getFilesAPI, downloadFileAPI } from "api";
 
 import { DashboardHeader, FileListTable } from "./components";
 
@@ -56,8 +56,6 @@ export const DashboardScreen = () => {
         throw "error";
       }
     } catch (err) {
-      console.log(err);
-
       alert("An error occured while downloading file.");
     }
   };
@@ -95,10 +93,16 @@ export const DashboardScreen = () => {
               onFileDownload={(i) => downloadFile(i)}
             />
           )}
-          {files?.length === 0 && <div style={{
-            padding: "2rem",
-            textAlign: 'center'
-          }}>No Files Found</div>}
+          {files?.length === 0 && (
+            <div
+              style={{
+                padding: "2rem",
+                textAlign: "center",
+              }}
+            >
+              No Files Found
+            </div>
+          )}
         </CardContent>
         <CardActions
           sx={{

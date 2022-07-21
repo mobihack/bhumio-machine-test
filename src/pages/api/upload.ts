@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import formidable from "formidable";
-import fs from 'fs';
+import fs from "fs";
 import Joi from "joi";
 
 import connectMongo from "utils/connectMongo";
@@ -37,17 +37,13 @@ export default async function handler(
     );
 
     const schema = Joi.object({
-     name: Joi.string()
-        .alphanum()
-        .required(),
-        type: Joi.string()
-        .alphanum()
-        .required()
+      name: Joi.string().required(),
+      type: Joi.string().required(),
     });
 
     const value = await schema.validateAsync({
       name: data.fields.name,
-      type: data.fields.mimeType
+      type: data.fields.mimeType,
     });
 
     var obj = {
@@ -68,8 +64,7 @@ export default async function handler(
       }
     });
   } catch (error) {
-    console.log(error);
-    
-    res.status(400).json({ error: "", status: "error" });
+
+    res.status(400).json({ error: "Error uploading file.", status: "error" });
   }
 }
